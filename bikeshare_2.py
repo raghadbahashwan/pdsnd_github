@@ -6,6 +6,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+# get_filters method
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -172,6 +173,7 @@ def user_stats(df, city=None):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
 
 def display_raw_data(df):
     """ Displays raws on user request """
