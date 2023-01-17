@@ -151,21 +151,46 @@ def user_stats(df, city=None):
 
     # Display counts of gender
     if city != 'washington':
-        gender = df['Gender'].value_counts()
-        print("Counts of gender\n", gender)
+        try:
+            gender = df['Gender'].value_counts()
+            print("Counts of gender\n", gender)
+        except:
+            print('No data found about gender for this city.')
 
     # Display earliest, most recent, and most common year of birth
-    print("year of birth statistics")
-    # earliest
-    print('Earliest year of birth:', df['Birth Year'].min())
-    # most recent
-    print('Earliest year of birth:', df['Birth Year'].max())
-    # most common
-    print('Earliest year of birth:', df['Birth Year'].mode()[0])
+    if city != 'washington':
+        try:
+            print("year of birth statistics")
+            # earliest
+            print('Earliest year of birth:', df['Birth Year'].min())
+            # most recent
+            print('Earliest year of birth:', df['Birth Year'].max())
+            # most common
+            print('Earliest year of birth:', df['Birth Year'].mode()[0])
+        except:
+            print('No data found about birth year for this city.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_raw_data(df):
+    """ Displays raws on user request """
+    i = 0
+    while True:
+        raw = input("<would you like to see some raw data? Enter yes or no\n")
+        if raw.lower() == 'no':
+            break
+        elif raw.lower() == 'yes':
+            print(df.head())
+            while True:
+                raw = input("would you like to see more ? Enter yes or no\n") # TO DO: convert the user input to lower case using lower() function
+                if raw.lower() != 'yes':
+                    return
+                i += 5
+                print(df.iloc[next:next + 5])
+
+        else:
+            raw = input("\nYour input is invalid. Please enter only 'yes' or 'no'\n").lower()
 
 def main():
     while True:
@@ -176,7 +201,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
+        display_raw_data(df)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
