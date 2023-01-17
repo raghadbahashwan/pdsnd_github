@@ -32,3 +32,6 @@ def get_filters()
 pandas
 numpy 
 time
+
+### software 
+python 3
