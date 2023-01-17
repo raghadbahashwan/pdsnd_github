@@ -20,3 +20,10 @@ Washington.csv
 ### Credits
 pandas documentation
 
+### functions 
+def user_stats(df, city=None)
+def trip_duration_stats(df)
+def station_stats(df)
+def time_stats(df)
+def load_data(city, month, day)
+def get_filters()
