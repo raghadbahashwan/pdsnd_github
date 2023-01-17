@@ -27,3 +27,8 @@ def station_stats(df)
 def time_stats(df)
 def load_data(city, month, day)
 def get_filters()
+
+### packages
+pandas
+numpy 
+time
